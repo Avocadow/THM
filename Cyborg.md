@@ -1,11 +1,11 @@
-##Cyborg 
-##Scan the machine, how many ports are open? 
+## Cyborg 
+## Scan the machine, how many ports are open? 
 To answer this question, we will simply do a nmap scan with this command : ""nmap -sC -sV 'machine ip'" 2 services are running on this machine : ssh (port 22) and http (port 80) 
 Then, we are going to perform a gobuster scan to find hidden pages by using this command :
 
 gobuster dir -u http://10.10.177.252/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 
-:tw-26a0:It's better to but extensions, in this case we didn't need them:tw-26a0: We found two pages :** /admin and /etc** 
+:tw-26a0:It's better to but extensions, in this case we didn't need them:tw-26a0: We found two pages :**/admin and /etc** 
 In this website, there are some informations about a guy who loves music. In his website, we can download an archive.tar file. To extract this file we are going to use this command "tar -xvf archive.tar" Then we got a home file. If we investigate a little bit, we can found that there is a readme file who told us to have a look to **Borg Backup", Let's dowload it. 
 Before, we found a passwdkey. In order to use Borg, we are going to crack it using John. **John h.txt --wordlistr/usr/share/wordlists/rockyou.txt" **The password is sguidward** 
 Now that we got the password, we can use Borg with this command : 
